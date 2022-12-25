@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <section>
+        <h4>Запитай ім’я користувача та виведи у відповідь “Привіт, *ім’я*”;</h4>
+        <p>What is your name</p>
+        <input type="text" class="name">
+        <button class="btn1">Send</button>
+        <p>
+            Привіт:
+            <span class="out1"></span>
+        </p>
+    </section>
+
+    <section>
+        <h4>
+            переводить їх в євро. EUR = 38гр <br>
+            Євро к Гривні
+        </h4>
+        <input type="text" class="euro">
+        <button class="btn2">Send</button>
+        <p>
+            по курсу:
+            <span class="out2"></span>
+        </p>
+    </section>
+
+    <script>
+       
+        // HW by Sasha
+        // 1.
+        let userName = document.querySelector('.name');
+        let button = document.querySelector('.btn1');
+        let out = document.querySelector('.out1');
+
+        button.onclick = () => {
+        out.innerHTML = userName.value;
+        }
+
+        // 2
+        let sumEuro = document.querySelector('.euro');
+        let button2 = document.querySelector('.btn2');
+        let out2 = document.querySelector('.out2');
+
+        button2.onclick = () => {
+            out2.innerHTML = sumEuro.value * 38;
+        }
+
+        
+
+
+
+    // HW Beetroot:
+// Мінімум
+        // let name;
+        // let userName;
+        // let name_user;
+        // let name1;
+
+        // let 1name
+        // let name-user
+        // let class
+
+        /*Вкажи всі можливі способи 
+        коментування коду*/
+
+
+        // Норма
+        // 1
+        // let nameUser = prompt("Як твоє ім'я");
+        // alert(`Привіт, ${nameUser}`);
+
+        // 2
+        // const thisYear = 2022;
+        // let bearthYear = +prompt("Який твій рік народження");
+        // let res = thisYear - bearthYear;
+        // alert(`Тобі ${res} років`);
+       
+        // 3
+        // let length = prompt("Яка довжина сторони квадрату");
+        // let res = length * 4;
+        // alert(`Периметр цього квадрату = ${res}`);
+        
+
+        // Максимум
+        // 2
+        // let distance = +prompt("Яка відстань між двома містами?");
+        // let hours = +prompt("За скільки годин ти хочеш дістатися?");
+        // let res = distance / hours;
+        // alert(`Необхідно рухатися зі швидкістю ${res} км/год.`);
+
+        // 3
+        // let dollars = +prompt("Скільки доларів ви хотіли поміняти?");
+        // const dollar = 38;
+        // const euro = 40;
+        // let resGrivna = dollars * dollar;
+        // let resEuro = resGrivna / euro;
+        // alert(`Це дорівнює ${resEuro} euro`);
+
+
+    </script>
+
+    <script src="main.js"></script>
+</body>
+</html>
