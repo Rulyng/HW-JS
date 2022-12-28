@@ -13,15 +13,18 @@
 // 3.Користувач вказує обсяг флешки в Гб. Програма повинна порахувати скільки файлів розміром в 820 Мб поміщається на флешку.
 
 let flashInGb = document.querySelector('.flashInGb');
-let flashInMb = flashInGb.value * 1024;
 let fileMb = 820;
-let resFile = Math.floor (flashInMb / fileMb);
-
 let btn = document.querySelector('.btn');
 let out = document.querySelector('.out');
+let out1 = document.querySelector('.out1');
+
 
 btn.onclick = () => {
-    out.innerHTML = resFile;
+    let flashInMb = +(flashInGb.value * 1024);
+    out.innerHTML = Math.floor (flashInMb / fileMb);
+    out1.innerHTML = flashInMb - out.innerHTML * fileMb;
+
+    flashInGb.value = '';
 }
 
 // let fleshInGb = prompt('How much Gb your flash')
