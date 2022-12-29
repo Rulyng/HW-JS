@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Гра: Введіть "камінь", "ножиці", "бумага" або "колодяц"</h1>
+    <input class="inp" type="text" />
+    <button>Грати</button>
+    <button class="btnres">Нова гра</button>
+    <h2>
+      Ваш вибір:
+      <span class="out">Камінь vs Бумага</span>
+      <div>Результат: <span class="out1"></span></div>
+    </h2>
+    <script>
+
+     
+
+      let inp = document.querySelector(".inp");
+      let out = document.querySelector(".out");
+      let out1 = document.querySelector(".out1");
+      let button = document.querySelector("button");
+      let btnres = document.querySelector(".btnres");
+
+      function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+      }
+      button.onclick = () => {
+        let compChoice = getRandomInt(4);
+        let humanChoice = inp.value;
+
+        switch (compChoice) {
+          case 0:
+            compChoice = "камінь";
+            break;
+          case 1:
+            compChoice = "ножиці";
+            break;
+          case 2:
+            compChoice = "бумага";
+            break;
+          case 3:
+            compChoice = "колодяц";
+            break;
+        }
+
+        out.innerHTML = `${compChoice} vs ${humanChoice}`;
+
+        if (compChoice === humanChoice) {
+          out1.innerHTML = "Нічия, спробуй ще!";
+        } else if (
+          (compChoice === "камінь" && humanChoice === "ножиці") ||
+          (compChoice === "ножиці" && humanChoice === "бумага") ||
+          (compChoice === "бумага" && humanChoice === "камінь") ||
+          (compChoice === "бумага" && humanChoice === "колодяц")
+          || compChoice === 'колодяц' && humanChoice === 'камінь'
+        ) {
+          out1.innerHTML = "Комп переміг";
+        } else {
+          out1.innerHTML = "User переміг!!!";
+        }
+        inp.value = "";
+      };
+
+      btnres.onclick = () => {
+        out1.innerHTML = '';
+      }
+
+    </script>
+  </body>
+</html>
