@@ -88,7 +88,7 @@ let out6 = document.querySelector('.out-6');
 let inp = document.querySelector('.i-6');
 function t6() {
    for (let i = 1; i <= inp.value; i++) {
-    out6.innerHTML += `******<br>`;
+    out6.innerHTML += '******<br>';
    }
 
 }

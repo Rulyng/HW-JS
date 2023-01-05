@@ -4,9 +4,15 @@
 // ***_***_***_
 // </pre>
 // <p>где звездочкa рисуются с помощью внутреннего цикла от 0 до 3, а _ с помощью внешнего.</p>
-
+let out = '';
 function t1() {
-
+for (let i = 0; i < 3; i++){
+    for (let k = 0; k < 3; k++){
+        out += '*';
+    }
+    out += '_';
+    }
+    document.querySelector('.out-1').innerHTML = out;
 }
 
 document.querySelector('.b-1').onclick = t1;
@@ -21,7 +27,14 @@ document.querySelector('.b-1').onclick = t1;
 // *_*_*_
 // <p>Решить задачу с помощью вложенных циклов. Внешний цикл выводит цифру и перенос строки br, внутренний - *_, и после этого внешний - знак переноса.</p>
 function t2() {
-
+    for (let i = 1; i < 4; i++){
+        out += i + '<br>';
+        for (let k = 0; k < 3; k++){
+            out += '*_';
+        }
+        out += '<br>';
+        }
+        document.querySelector('.out-2').innerHTML = out;
 }
 
 document.querySelector('.b-2').onclick = t2;
@@ -36,7 +49,13 @@ document.querySelector('.b-2').onclick = t2;
 
 // <p>Решить задачу с помощью вложенных циклов. Внутренний цикл выводит *_,  внешний цикл выводит перенос строки br.</p>
 function t3() {
-
+    for (let i = 0; i < 4; i++){
+        for (let k = 0; k < 3; k++){
+            out += '*_';
+        }
+        out += '<br>';
+        }
+        document.querySelector('.out-3').innerHTML = out;
 }
 
 document.querySelector('.b-3').onclick = t3;
@@ -46,7 +65,13 @@ document.querySelector('.b-3').onclick = t3;
 // 1_1*2*3*4*5*2_1*2*3*4*5*3_1*2*3*4*5*
 // Внешний цикл выводит цифру и _, а внутренний выводит от 1 до 5 с *
 function t4() {
-
+    for (let i = 1; i < 4; i++){
+        out += i + '_';
+        for (let k = 1; k < 6; k++){
+            out += k + '*';
+        }
+        }
+        document.querySelector('.out-4').innerHTML = out;
 }
 
 document.querySelector('.b-4').onclick = t4;
@@ -60,8 +85,23 @@ document.querySelector('.b-4').onclick = t4;
 // 101010
 
 // <p>Вложенный цикл в зависимости от четного или нет k (счетчика цикла) рисует или 0 или 1. Внешний цикл - br.</p>
-function t5() {
 
+// ????????????????????????????????????
+function t5() {
+           
+        for (let i = 0; i < 3; i++){
+        
+            for (let k = 1; k < 7; k++){
+                if(k % 2){
+                    out += '1';
+                } else{
+                    out += '0';
+                }
+                
+            }
+            out += '<br>';
+            }
+            document.querySelector('.out-5').innerHTML = out;
 }
 
 document.querySelector('.b-5').onclick = t5;
@@ -76,7 +116,13 @@ document.querySelector('.b-5').onclick = t5;
 
 
 function t6() {
-
+    for (let i = 1; i < 4; i++){
+        out += i + '_';
+        for (let k = 1; k < 6; k++){
+            out += k + '*';
+        }
+        }
+        document.querySelector('.out-6').innerHTML = out;
 }
 
 document.querySelector('.b-6').onclick = t6;
