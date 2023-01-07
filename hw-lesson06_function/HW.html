@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    input{
+        margin: 10px;
+    }
+</style>
+<body>
+    
+  <h2>Фікс: <br>
+    1: Очищення input після кліку <br>
+    2: Валідіція якщо пусті імпути, якщо хочаб одне не заповнена <br> 
+    3: вік і телефон толькі цифри + щоб не меньше нуля<br>
+    4. Щоб юзер не міг дублювати
+</h2>
+
+<div><input class="name inp" type="text" name="" id="" placeholder="name"><span class="error"></span></div>
+
+<div><input class="age inp" type="text" name="" id="" placeholder="age"><span class="error"></span></div>
+
+<div><input class="tel inp" type="text" name="" id="" placeholder="tel"><span class="error"></span></div>
+
+<div><button>Add</button></div>
+<!-- <div><button class="reset">Rese</button></div> -->
+
+
+
+
+<ol class="out">
+</ol>
+
+
+
+<script>
+let name = document.querySelector('.name');
+let age = document.querySelector('.age');
+let tel = document.querySelector('.tel');
+let btn = document.querySelector('button');
+let out = document.querySelector('.out');
+let inp = document.querySelectorAll('.inp');
+let error = document.querySelectorAll('.error');
+let reset = document.querySelector('.reset');
+
+// Очищення input після кліку
+function deleteInp (){
+    for(let i = 0; i < inp.length; i++){ 
+        inp[i].value = '';
+    }
+}
+
+// Очищення error після кліку   -  не спрацьовує???
+// function deleteError (){
+//     for(let i = 0; i < error.length; i++){ 
+//         error[i].innerHTML = '';
+//     }
+// }
+
+// Валідіція якщо пусті імпути
+ // спрацьовує навіть якщо заповнене поле?????
+function checkEmptyInp (){
+    for(let i = 0; i < inp.length; i++){
+        if(!inp[i].value)
+        {
+        error[i].innerHTML = 'Input the date!!!';
+        error[i].style.color = 'red';
+               } else{
+        error[i].innerHTML = '';
+        error[i].style.color = '';
+               }
+}
+    }
+
+    // якщо пусте поле то  додається нумерація li (1, 2 , 3...) в out????
+
+function addUser(name, age, tel){
+ 
+  return `
+  <li>
+  <span>${name}</span>
+  <span>${age}</span>
+  <span>${tel}</span>
+  </li>
+  `;
+}
+
+
+// щоб не додавалася нумерація li  в out - не працює????
+
+// function addUser(name, age, tel){
+//   for(let i = 0; i < inp.length; i++){
+//       if(!inp[i].value){
+//       break;  
+//   }   
+//   else{
+//       return `
+// <li>
+// <span>${name}</span>
+// <span>${age}</span>
+// <span>${tel}</span>
+// </li>
+// `;
+//   }
+//   } 
+// }
+
+
+btn.onclick = () => {
+    out.innerHTML += addUser(name.value, age.value, tel.value);
+    checkEmptyInp ()
+    deleteInp ()
+
+}
+
+
+// reset.onclick = () => {
+//     deleteError()
+//     deleteInp ()
+// }
+
+
+
+</script>
+</body>
+</html>
