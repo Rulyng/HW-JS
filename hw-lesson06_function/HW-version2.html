@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+          margin: 10px;
+        }
+      </style>
+</head>
+
+<body>
+    <h2>
+      Фікс: <br>
+      1: Очищення input після кліку <br>
+      2: Валідіція якщо пусті імпути, якщо хочаб одне не заповнена <br>
+      3: вік і телефон толькі цифри + щоб не меньше нуля<br>
+      4. Щоб юзер не міг дублювати
+    </h2>
+    <span id="error"></span>
+    <form>
+      <label>Name: <input type="text" id="name"></label>
+      <br>
+      <label>Age: <input type="number" id="age"></label>
+      <br>
+      <label>Telephone: <input type="number" id="telephone"></label>
+      <br>
+      <button type="button" id="add">Add</button>
+    </form>
+    <br>
+    <ol id="list"></ol>
+    
+
+    <script>
+      const nameInput = document.getElementById("name");
+      const ageInput = document.getElementById("age");
+      const telephoneInput = document.getElementById("telephone");
+      const addButton = document.getElementById("add");
+      const list = document.getElementById("list");
+      const errorSpan = document.getElementById("error");
+
+      function validateInputs() {
+        const name = nameInput.value;
+        const age = ageInput.value;
+        const telephone = telephoneInput.value;
+
+        if (name === "" || age < 0 || age === "" || telephone === "") {
+          errorSpan.innerHTML = "One or more inputs are invalid";
+          errorSpan.style.color = 'red';
+          return false;
+        }
+        return true;
+      }
+
+      function checkDuplicate(listItem) {
+        for (const li of list.children) {
+          if (li.innerHTML === listItem) {
+            errorSpan.innerHTML = "List item already exists";
+            errorSpan.style.color = 'red';
+            return true;
+          }
+        }
+
+        return false;
+      }
+
+      function addListItem(listItem) {
+        const li = document.createElement("li");
+        li.innerHTML = listItem;
+        list.appendChild(li);
+      }
+
+      function clearInputs() {
+        nameInput.value = "";
+        ageInput.value = "";
+        telephoneInput.value = "";
+        errorSpan.innerHTML = "";
+      }
+
+      addButton.onclick = () => {
+        const name = nameInput.value;
+        const age = ageInput.value;
+        const telephone = telephoneInput.value;
+        const listItem = `Name: ${name}, Age: ${age}, Telephone: ${telephone}`;
+
+        if (!validateInputs() || checkDuplicate(listItem)) return;
+        addListItem(listItem);
+        clearInputs();
+      };
+    </script>
+  
+
+</body>
+</html>
