@@ -2,8 +2,10 @@
 //Создайте массив ar1 содержащий строки, числа, булевы значения. Выведите его в .out-1. Вывод - по нажатию кнопки b-1
 
 // let ar1 = // переменную обьявляем здесь!!!!
+let ar1 = ['Ruslan', 12, true, 'Hi', 28, false];
 
 function f1() {
+    document.querySelector('.out-1').innerHTML = ar1;
     //ваш_элемент.innerHTML = ar1; // да так можно выводить!!!!
 }
 
@@ -13,8 +15,17 @@ document.querySelector('.b-1').onclick = f1;
 //Создайте массив ar2 содержащий строки, числа, булевы значения. Выведите его в div.out-2. Используйте шаблон вывода из кода в JS. Вывод - по нажатию кнопки b-2
 
 // let ar2 = // переменную обьявляем здесь!!!!
+let ar2 = ['Ruslan', 12, true, 'Hi', 28, false];
 
 function f2() {
+let out = '';
+
+for(let i = 0; i < ar2.length; i ++){
+    out += ar2[i] + ' ';
+}
+document.querySelector('.out-2').innerHTML = out;
+
+
     // let out = '';
     // for (let i = 0; i < ar2.length; i++) {
     //     out +=ar2[i]+' ';
@@ -31,8 +42,17 @@ document.querySelector('.b-2').onclick = f2;
 // Тест допустим массив [1,2,3] вывод - 3
 
 // let ar3 =  // переменную обьявляем здесь!!!!
-
+let ar3 = ['Ruslan', 12, true, 'Hi', 28, false];
 function f3() {
+    document.querySelector('.out-3').innerHTML = ar3.length;
+
+
+    // let out2 = [];
+// перебирає літери???
+// for(let i = 0; i < ar3.length; i ++){
+//     out2 += ar3[i];
+// }
+// document.querySelector('.out-3').innerHTML = out2.length;
 }
 
 document.querySelector('.b-3').onclick = f3;
@@ -46,7 +66,15 @@ document.querySelector('.b-3').onclick = f3;
 
 // let ar4 =  // переменную обьявляем эту здесь!!!!
 
+let ar4 = [1,2,3,4,5,6,7,8,9,10];
 function f4() {
+    let out = '';
+   
+    for(let i = 0; i < ar4.length; i ++){
+        if (i == 0 || i == 3 || i == 8)
+            out += ar4[i] + ' ';
+        }
+        document.querySelector('.out-4').innerHTML = out;
 }
 
 document.querySelector('.b-4').onclick = f4;
@@ -59,8 +87,18 @@ document.querySelector('.b-4').onclick = f4;
 // Тест допустим массив [1,2,3,4,5,6,7,8,9,10] вывод: 8
 
 // let ar5 =
+let ar5 = [1,2,3,4,5,6,7,8,9,10];
 
 function f5() {
+    let sum = 0;
+    
+    for(let i = 0; i < ar4.length; i ++){
+if(i == 0 || i == 2 || i == 3){
+    // sum = sum + ar4[i];
+    sum += ar4[i];
+}
+    }
+    document.querySelector('.out-5').innerHTML = sum;
 }
 
 document.querySelector('.b-5').onclick = f5;
@@ -71,9 +109,14 @@ document.querySelector('.b-5').onclick = f5;
 // Вывод - по нажатию кнопки b-6
 // Вывод в out-6
 
-// let ar6 =
+let ar6 = ['Ruslan', 'twin', 20, 06];
 
 function f6() {
+    let out = '';
+for(let i = 0; i < ar6.length; i ++){
+    out += ar6[i] + ' ';
+}
+document.querySelector('.out-6').innerHTML = out;
 }
 
 document.querySelector('.b-6').onclick = f6;
@@ -87,6 +130,8 @@ document.querySelector('.b-6').onclick = f6;
 let ar7 = ['china', 'india', 'brazil', 'japan', 'egypt'];
 
 function f7() {
+    ar7.push('italy', 'turkey', 'vietnam');
+    document.querySelector('.out-7').innerHTML = ar7;
 }
 
 document.querySelector('.b-7').onclick = f7;
@@ -101,6 +146,17 @@ document.querySelector('.b-7').onclick = f7;
 let ar8 = [];
 
 function f8() {
+    let out = '';
+    ar8[3] = 3.14;
+    ar8[4] = 17;
+    ar8[6] = 5;
+for(let i = 0; i < ar8.length; i++){
+    out += ar8[i] + '-';
+}
+
+    document.querySelector('.out-8').innerHTML = out;
+    document.querySelector('.out-8-1').innerHTML = ar8.length;
+
 }
 
 document.querySelector('.b-8').onclick = f8;
@@ -114,6 +170,11 @@ document.querySelector('.b-8').onclick = f8;
 let ar9 = [100, 200, 300, 400, 700, 121];
 
 function f9() {
+    let out = '';
+    for(let i = 0; i < ar9.length; i++){
+        out = ar9[i];
+    }
+    document.querySelector('.out-9').innerHTML = out;
 }
 
 document.querySelector('.b-9').onclick = f9;
@@ -127,6 +188,11 @@ document.querySelector('.b-9').onclick = f9;
 let ar10 = [100, 200, 300, 400, 700, 121];
 
 function f10() {
+    let sum = 0;
+    for(let i = 0; i < ar10.length; i++){
+        sum = `${ar10[0] + ar10[i]}` ;
+    }
+    document.querySelector('.out-10').innerHTML = sum;
 }
 
 document.querySelector('.b-10').onclick = f10;
@@ -143,6 +209,15 @@ let ar11 = [2, 3, 4, 5, 6, 7];
 
 function f11() {
 
+    t = ar11[2];
+    ar11[2] = ar11[4];
+    ar11[4] = t;
+
+    // ar11[4] = ar11.splice(2,1, ar11[4])[2]; //don't work
+
+
+    document.querySelector('.out-11').innerHTML = ar11.join(' ');
+
 }
 
 document.querySelector('.b-11').onclick = f11;
@@ -157,7 +232,10 @@ document.querySelector('.b-11').onclick = f11;
 let ar12 = ['test', 'west', 'list', 'class', 'best'];
 
 function f12() {
-
+t = ar12[0];
+ar12[0] = ar12[ar12.length - 1];
+ar12[ar12.length - 1] = t;
+document.querySelector('.out-12').innerHTML = ar12.join(' ');
 }
 
 document.querySelector('.b-12').onclick = f12;
@@ -174,7 +252,11 @@ document.querySelector('.b-12').onclick = f12;
 let ar13 = ['test', 'west', 'list', 'class', 'best'];
 
 function f13() {
-
+let out = '';
+for(let i = 0; i < ar13.length; i++){
+    out += `${i} ${ar13[i]} `;
+}
+document.querySelector('.out-13').innerHTML = out;
 }
 
 document.querySelector('.b-13').onclick = f13;
@@ -189,7 +271,11 @@ document.querySelector('.b-13').onclick = f13;
 let ar14 = [1, 2, 3, 'hello', 66];
 
 function f14() {
-
+    let out = '';
+    for(let i = ar14.length-1; i >= 0; i--){
+        out += ar14[i] + ' ';
+    }
+    document.querySelector('.out-14').innerHTML = out;
 }
 
 document.querySelector('.b-14').onclick = f14;
@@ -203,7 +289,13 @@ document.querySelector('.b-14').onclick = f14;
 let ar15 = [0, 2, 5, -4, 6, 22, -9, -12, 8, 12, 13, 78];
 
 function f15() {
-
+let out = '';
+for(let i = 0; i < ar15.length; i++){
+    if(ar15[i] > 0){
+        out += ar15[i] + ' ';
+    }
+}
+document.querySelector('.out-15').innerHTML = out;
 }
 
 document.querySelector('.b-15').onclick = f15;
@@ -219,7 +311,15 @@ let ar16_odd = [];
 let ar16_even = [];
 
 function f16() {
-
+    for(let i = 0; i < ar16.length; i++){
+        if(ar16[i] % 2 == 0){
+            ar16_even.push(ar16[i]);
+        } else{
+            ar16_odd.push(ar16[i]);
+        }
+    }
+document.querySelector('.out-16-even').innerHTML = ar16_even.join(' ');
+document.querySelector('.out-16-odd').innerHTML = ar16_odd.join(' ');
 }
 
 document.querySelector('.b-16').onclick = f16;
@@ -230,10 +330,16 @@ document.querySelector('.b-16').onclick = f16;
 // Вывод - по нажатию кнопки b-17
 // Вывод в out-17
 
-let ar17 = [3, 0, 2, 6, 0, 1, 3, 1, 9, 0, 2, 0];
-console.log(ar17);
-function f17() {
+let ar17 = [3, 0, 2, 6, 22, 8, 9, 122];
 
+function f17() {
+    let out = [];
+    for(let i = 0; i < ar17.length; i++){
+        if(ar17[i] > 3){
+            out.push(ar17[i]);
+        }
+    }
+    document.querySelector('.out-17').innerHTML = out.length;
 }
 
 document.querySelector('.b-17').onclick = f17;
@@ -248,6 +354,13 @@ document.querySelector('.b-17').onclick = f17;
 let ar18 = [15, 24, 13, 78, 21, 4, 45, 67];
 
 function f18() {
+    let max = ar18[0];
+    for(let i = 0; i < ar18.length; i++){
+        if(ar18[i] > max){
+            max = ar18[i];
+        }
+    }
+    document.querySelector('.out-18').innerHTML = max;
 
 }
 
@@ -263,6 +376,13 @@ document.querySelector('.b-18').onclick = f18;
 let ar19 = [15, 424, 313, 78, 241, 4, 45, 67];
 
 function f19() {
+    let min = ar19[0];
+    for(let i = 0; i < ar19.length; i++){
+        if(ar19[i] < min){
+            min = i;
+        }
+    }
+    document.querySelector('.out-19').innerHTML = min;
 
 }
 
@@ -277,7 +397,13 @@ document.querySelector('.b-19').onclick = f19;
 let ar20 = [4, 5, 6, 7, 8, 9, 10];
 
 function f20() {
+let sum = 0;
+for(let i = 0; i < ar20.length; i++){
+   
+        sum += ar20[i];
 
+}
+document.querySelector('.out-20').innerHTML = sum;
 }
 
 document.querySelector('.b-20').onclick = f20;
