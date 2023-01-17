@@ -17,8 +17,8 @@ document.querySelector('.b-1').onclick = f1;
 
 function f2() {
     let a2 = [[12, 'hi'], [45, 87], [55, 13]];
-
-    // return
+    document.querySelector('.out-2').innerHTML = a2[0][1];
+    return a2[0][1]
 }
 
 document.querySelector('.b-2').onclick = f2;
@@ -30,8 +30,8 @@ document.querySelector('.b-2').onclick = f2;
 
 function f3() {
     let a3 = [[1, 2, 3], [3, 4, 5], [6, [7, 'my']]];
-
-    // return
+    document.querySelector('.out-3').innerHTML = a3[2][1][1];
+    return a3[2][1][1];
 }
 
 document.querySelector('.b-3').onclick = f3;
@@ -43,8 +43,8 @@ document.querySelector('.b-3').onclick = f3;
 
 function f4() {
     let a4 = [[1, 2, 3], 'go', [3, 4, 5], [6, [7, 'my']]];
-
-    // return
+    document.querySelector('.out-4').innerHTML = a4[1];
+    return a4[1];
 }
 
 document.querySelector('.b-4').onclick = f4;
@@ -54,13 +54,24 @@ document.querySelector('.b-4').onclick = f4;
 
 
 function f5() {
-    let out = '';
-    let a5 = [[1, 2], [3, 4], [5, 6], [21, 34], [44, 56]];
-    for (let i = 0; i < a5.length; i++) {
-        if (a5[i][0] % 2 == 0) out += a5[i][0] + ' ';
-        if (a5[i][1] % 2 == 0) out += a5[i][1] + ' ';
+let out = '';
+let a5 = [[1, 2], [3, 4], [5, 6], [21, 34], [44, 56]];
+for(let i = 0; i < a5.length; i ++){
+    for(let k = 0; k < a5[i].length; k ++){
+        if(a5[i][k] % 2 == 0){
+            out += a5[i][k] + ' ';
+        }
     }
-    document.querySelector('.out-5').innerHTML = out;
+}
+
+document.querySelector('.out-5').innerHTML = out;
+    // let out = '';
+    // let a5 = [[1, 2], [3, 4], [5, 6], [21, 34], [44, 56]];
+    // for (let i = 0; i < a5.length; i++) {
+    //     if (a5[i][0] % 2 == 0) out += a5[i][0] + ' ';
+    //     if (a5[i][1] % 2 == 0) out += a5[i][1] + ' ';
+    // }
+    // document.querySelector('.out-5').innerHTML = out;
 }
 
 document.querySelector('.b-5').onclick = f5;
@@ -72,7 +83,15 @@ document.querySelector('.b-5').onclick = f5;
 function f6() {
     let out = '';
     let a6 = [[1, 2], [3, 4], [5, 6], [21, 34], [44, 56]];
-
+    for(let i = 0; i < a6.length; i ++){
+        for(let k = 0; k < a6[i].length; k ++){
+            if(a6[i][k] % 2 !== 0){
+                out += a6[i][k] + ' ';
+            }
+        }
+    }
+    
+    document.querySelector('.out-6').innerHTML = out;
 }
 
 document.querySelector('.b-6').onclick = f6;
@@ -89,11 +108,19 @@ function f7() {
         [21, 34, 43],
         [44, 56]
     ];
-    for (let i = 0; i < a7.length; i++) {
-        for (let k = 0; k < a7[i].length; k++) {
-            if (a7[i][k] % 2 == 0) out += a7[i][k] + ' ';
+
+    for(let i = 0; i < a7.length; i ++){
+        for(let k = 0; k < a7[i].length; k ++){
+            if(a7[i][k] % 2 == 0){
+                out += a7[i][k] + ' ';
+            }
         }
     }
+    // for (let i = 0; i < a7.length; i++) {
+    //     for (let k = 0; k < a7[i].length; k++) {
+    //         if (a7[i][k] % 2 == 0) out += a7[i][k] + ' ';
+    //     }
+    // }
     document.querySelector('.out-7').innerHTML = out;
 
 }
@@ -113,7 +140,14 @@ function f8() {
         [44, 56]
     ];
 
-
+    for(let i = 0; i < a8.length; i ++){
+        for(let k = 0; k < a8[i].length; k ++){
+            if(a8[i][k] % 2 !== 0){
+                out += a8[i][k] + ' ';
+            }
+        }
+    }
+    document.querySelector('.out-8').innerHTML = out;
 }
 
 document.querySelector('.b-8').onclick = f8;
@@ -131,7 +165,14 @@ function f9() {
         [44, -56]
     ];
 
-
+    for(let i = 0; i < a9.length; i ++){
+        for(let k = 0; k < a9[i].length; k ++){
+            if(a9[i][k] > 0){
+                out += a9[i][k] + ' ';
+            }
+        }
+    }
+    document.querySelector('.out-9').innerHTML = out;
 }
 
 document.querySelector('.b-9').onclick = f9;
@@ -148,6 +189,17 @@ function f10() {
         ['st', 21, -34, -43],
         [44, -56, 'task']
     ];
+
+    for(let i = 0; i < a10.length; i ++){
+        for(let k = 0; k < a10[i].length; k ++){
+            if(typeof a10[i][k] != 'number')
+            // if(typeof a10[i][k] = 'string')
+            {
+                out += a10[i][k] + ' ';
+            }
+        }
+    }
+    document.querySelector('.out-10').innerHTML = out;
 }
 
 document.querySelector('.b-10').onclick = f10;
@@ -164,6 +216,14 @@ let a11 = [
 
 function f11() {
     let out = '';
+
+    for(let i = 0; i < a11.length; i ++){
+        for(let k = a11[i].length-1; k >= 0; k --){
+                out += a11[i][k] + ' ';
+        }
+        out += '<br>';
+    }
+    document.querySelector('.out-11').innerHTML = out;
 }
 
 document.querySelector('.b-11').onclick = f11;
@@ -182,6 +242,16 @@ function f12() {
         [0, 1, 0, 1, 0, 1, 0, 1],
         [1, 0, 1, 0, 1, 0, 1, 0],
     ];
+
+    let out = '';
+
+    for(let i = 0; i < a12.length; i ++){
+        for(let k = 0; k < a12[i].length; k++){
+            if(a12[i][k] === 1)
+                out += a12[i][k] + ' ';
+        }
+    }
+    document.querySelector('.out-12').innerHTML = out;
 }
 
 document.querySelector('.b-12').onclick = f12;
@@ -193,6 +263,11 @@ let a13 = [];
 
 function f13() {
 
+//     for(let i = 0; i < 8; i ++){
+//         for(let k = 0; k < 8; k++){
+
+// }
+//     }
 }
 
 document.querySelector('.b-13').onclick = f13;
@@ -210,7 +285,12 @@ let a14 = [
 ];
 
 function f14() {
+    let out = '';
 
+    for(let i = 0; i < a14.length; i ++){
+        out += a14[i].length + ' ';
+    }
+    document.querySelector('.out-14').innerHTML = out;
 }
 
 document.querySelector('.b-14').onclick = f14;
@@ -229,6 +309,16 @@ let a15 = [
 
 function f15() {
 
+    let max = 0;
+
+    for(let i = 0; i < a15.length; i ++){
+        if(max < a15[i].length){
+            max = a15[i].length;
+        }
+    }
+
+    document.querySelector('.out-15').innerHTML = max;
+
 }
 
 document.querySelector('.b-15').onclick = f15;
@@ -238,10 +328,11 @@ document.querySelector('.b-15').onclick = f15;
 // Ответ в данной задаче прописан сразу. Т.е вы руками просто пишите массив такой, чтобы условия выполнялись.
 
 let a16 = [
-    [0, 7, 0, 6],
-    0,
-    0,
-    8
+    ['Task 16 ================', [1, 2, 5, 8]],
+    [1, 2, 5, 8],
+    [[1, 7, 5, 8], 1, 2, 5, 8],
+    ['Task 16 ================'],
+    
 ];
 
 console.group('Task 16 ================');
