@@ -12,10 +12,12 @@ function showArr(domElem, arr) {
 let d1 = [33, 'best', 66, 'best'];
 
 function f1() {
-    /**
-     * ваш код здесь
-     */
+    
+    d1.push(document.querySelector('.i-1').value);
+
     showArr('.out-1', d1);
+
+    document.querySelector('.i-1').value = '';
 }
 
 document.querySelector('.b-1').onclick = f1;
@@ -25,7 +27,7 @@ document.querySelector('.b-1').onclick = f1;
 // функция выполняется при нажатии кнопки b-2
 
 function f2() {
-
+d1.pop();
     showArr('.out-2', d1);
 }
 
@@ -36,7 +38,7 @@ document.querySelector('.b-2').onclick = f2;
 // функция выполняется при нажатии кнопки b-3
 
 function f3() {
-
+    d1.shift();
     showArr('.out-3', d1);
 }
 
@@ -48,7 +50,7 @@ document.querySelector('.b-3').onclick = f3;
 
 
 function f4() {
-
+    d1.push(document.querySelector('.i-4').value)
     showArr('.out-4', d1);
 }
 
@@ -59,7 +61,7 @@ document.querySelector('.b-4').onclick = f4;
 // функция выполняется при нажатии кнопки b-5
 
 function f5() {
-
+d1.unshift(document.querySelector('.i-5').value)
     showArr('.out-5', d1);
 }
 
@@ -74,7 +76,7 @@ document.querySelector('.b-5').onclick = f5;
 let d6 = ['test', 5, 12];
 
 function f6() {
-
+d6[d6.length] = document.querySelector('.i-6').value;
     showArr('.out-6', d6);
 }
 
@@ -89,7 +91,12 @@ document.querySelector('.b-6').onclick = f6;
 let d7 = ['china', 'india', 'brazil', 'japan', 'egypt'];
 
 function f7() {
+  // проверка что бы не было ошибки в консоль, когда масив пустой
+    if (d7.length != 0) {
+        d7.length = d7.length - 1;
+    }
 
+// d7.length = d7.length - 1;
     showArr('.out-7', d7);
 }
 
@@ -105,6 +112,11 @@ let d8 = [2, '4', 12, 67, 'hello'];
 
 function f8() {
 
+   ar = document.querySelector('.i-8').value;
+   for(i = d8.length - 1; i >=0; i--){
+    d8[i + 1] = d8[i];
+   }
+   d8[0] = ar;
     showArr('.out-8', d8);
 }
 
@@ -119,6 +131,11 @@ document.querySelector('.b-8').onclick = f8;
 let d9 = [100, 200, 300, 400, 700, 121];
 
 function f9() {
+   let ar = [];
+   for(let i = 1; i < d9.length; i++){
+    ar[ar.length] = d9[i];
+   }
+   d9 = ar; 
 
     showArr('.out-9', d9);
 }
@@ -134,7 +151,7 @@ document.querySelector('.b-9').onclick = f9;
 let d10 = [3, 14, 15, 92, 6];
 
 function f10() {
-
+d10.reverse();
     showArr('.out-10', d10);
 }
 
@@ -150,8 +167,33 @@ document.querySelector('.b-10').onclick = f10;
 let d11 = [2, 3, 4, 5, 6, 7];
 
 function f11() {
+let num = +document.querySelector('.i-11').value;
+let out = document.querySelector('.out-11');
 
+
+for(let i = 0; i < d11.length; i++){
+    if(d11.indexOf(num) >= 0){
+        
+        out.innerHTML = d11.indexOf(num);
+    } else{
+        
+        out.innerHTML = -1;
+    }
 }
+//2 ver.
+// let ar = +document.querySelector('.i-11').value;
+// let out = "";
+// for (let i = 0; i < d11.length; i++) {
+//     if (d11.indexOf(ar) >= 0) {
+//         out = d11.indexOf(ar)
+//     } else {
+//         out = d11.indexOf(ar);
+//     }
+
+// }
+// document.querySelector('.out-11').innerHTML = out;
+}
+
 
 document.querySelector('.b-11').onclick = f11;
 
@@ -165,8 +207,41 @@ document.querySelector('.b-11').onclick = f11;
 let d12 = [6, 62, 60, 70, 1, 5];
 
 function f12() {
+    let out12 = document.querySelector('.out-12');
+let num12 = +document.querySelector('.i-12').value;
 
+    // let out = '';
+    // for (let i = 0; i < d12.length; i++){
+    //     if(d12[i] === num12){
+    //         out = i;
+    //         break;
+    //     } else{
+    //         out = -1; 
+    //     }
+    // }
+    // out12.innerHTML = out;
+
+    // робочий вар. S.
+    // let out = -1;
+    // for (let i = 0; i < d12.length; i++){
+    //     if(d12[i] === num12){
+    //         out = i;
+    //     } else{
+    //         out; 
+    //     }
+    // }
+    // out12.innerHTML = out;
 }
+// не спрацьовує, виводить -1
+//     for (let i = 0; i < d12.length; i++) {
+//             if (d12[i] === num12) {
+//                 out12.innerHTML = i;
+//             } else {
+//                 out12.innerHTML = -1;
+//             }
+        
+//         }
+// }
 
 document.querySelector('.b-12').onclick = f12;
 
@@ -180,7 +255,11 @@ document.querySelector('.b-12').onclick = f12;
 let d13 = [6, 0, 22, 1, 4, 76];
 
 function f13() {
-
+    let out = [];
+for(let i = d13.length-1; i >= 0; i--){
+    out.push(d13[i])
+}
+d13 = out;
     showArr('.out-13', d13);
 }
 
@@ -196,6 +275,11 @@ document.querySelector('.b-13').onclick = f13;
 let d14 = [];
 
 function f14() {
+       let num = +document.querySelector('.i-14').value;
+for(i = 0; i < num; i++){
+    // d14.push(1);
+    d14[d14.length] = 1;
+}
 
     showArr('.out-14', d14);
 }
@@ -211,7 +295,26 @@ document.querySelector('.b-14').onclick = f14;
 let d15 = [0, 2, 5, -4, 6, 22, -9, -12, 8, 12, 13, 78];
 
 function f15() {
+    let num = +document.querySelector('.i-15').value;
+    for(let i = 0; i < d15.length; i++){
+if(num !== d15[i]){
+    d15.push(num);
+    break;
+}
+    }
 
+// 2ver S.
+// let res = true;
+// for(let i = 0; i < d15.length; i++){
+//     if(num == d15[i]){
+//         res = false;
+//         break
+//     }
+
+// }
+// if(res){
+//     d15.push(num);
+// }
 
     showArr('.out-15', d15);
 }
@@ -229,7 +332,7 @@ let d161 = [5, 6, 7, 8, 9];
 let d162 = [23, 24, 56, 87];
 
 function f16() {
-
+d16 = d161.concat(d162);
     showArr('.out-16', d16);
 }
 
@@ -246,7 +349,22 @@ let d171 = ['a', 'b', 'c', 'd'];
 let d172 = [1, 2, 3, 4, 5];
 
 function f17() {
+//     let out1 = '';
+//     let out2 = '';
+//     for(let i = 0; i < d171.length; i++){
+// out1 += d171[i];
+//     }
 
+//     for(let i = 0; i < d172.length; i++){
+//         out2 += d172[i];
+//             }
+//             d17 = out1 + out2; 
+
+// 2 ver. S.
+for(let i = 0; i < d172.length; i++){
+    d171[d171.length] = d172[i];
+        }
+        d17 = d171; 
     showArr('.out-17', d17);
 }
 
@@ -262,7 +380,17 @@ document.querySelector('.b-17').onclick = f17;
 let d18 = ['b', 'c', '45', 'e', 'z', 'y'];
 
 function f18() {
-
+    let num = document.querySelector('.i-18').value;
+    let out = '';
+    for(let i = 0; i < d18.length; i++){
+        if(d18.includes(num)){
+            out = d18.includes(num);
+        }
+        else{
+            out = d18.includes(num);
+        }
+    }
+    document.querySelector('.out-18').innerHTML = out;
 }
 
 document.querySelector('.b-18').onclick = f18;
@@ -274,11 +402,16 @@ document.querySelector('.b-18').onclick = f18;
 // Вывод - по нажатию кнопки b-19
 // Вывод в out-19
 
-let d19 = ['Your', 'payment', 'method', 'will', 'automatically', 'be', 'charged', 'in', 'advance', 'every'];
+let d19 = ['Your', 'pdddddddayment', 'method', 'will', 'automatically', 'be', 'charged', 'in', 'advance', 'every'];
 let maxString = '';
 
 function f19() {
-
+for(let i = 0; i < d19.length; i++){
+    if(maxString.length < d19[i].length){
+        maxString = d19[i];
+    }
+}
+document.querySelector('.out-19').innerHTML = maxString;
 }
 
 document.querySelector('.b-19').onclick = f19;
@@ -292,7 +425,9 @@ document.querySelector('.b-19').onclick = f19;
 let d20 = [4, 5, 6, 7, 8, 9, 10];
 
 function f20() {
-
+   let out = '';
+    out = d20.join('');
+    document.querySelector('.out-20').innerHTML = out;
 }
 
 document.querySelector('.b-20').onclick = f20;

@@ -6,24 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    div{
+ margin: 20px;   
+}
+</style>
 <body>
+
+    <!-- 1 -->
+    <p>Створи об'єкт, що описує автомобіль (виробник, модель, рік випуску, середня швидкість, обсяг паливного баку, середня витрата палива на 100 км., водії), і наступні методи для роботи з цим об'єктом:
+
+        Метод, який виводить на екран інформацію про автомобіль.
+        Додавання ім’я водія у список
+        Перевірка водія на наявність його ім’я у списку
+        Підрахунок необхідного часу та кількості палива для подолання переданої відстані з середньою швидкістю. Враховуй, що через кожні 4 години дороги водієві необхідно робити перерву на 1 годину. </p>
     
-    <div class="out"></div>
+    <div class="out">Info about car:</div>
+    <button class="btn">Info about car</button>
+
     <div class="add-name">
-        <input class="inp1" type="text" placeholder="name"> <span>Add name</span>
+        <input class="inp1" type="text" placeholder="name"> 
+        <button class="btn1">Add name driver</button>
+        <div class="out3">0</div>
     </div>
+    
     <div class="check-name">
-        <input class="inp2" type="text" placeholder="name"> <span>Check name</span>
-        <div class="out1"></div>
+        <input class="inp2" type="text" placeholder="name"> 
+        <button class="btn2">Check name</button>
+        <div class="out1">0</div>
     </div>
     <div class="calc">
-        <input class="inp3" type="text" placeholder="name"> <span>Input the distance</span>
-        <div class="out2"></div>
+        <input class="inp3" type="text" placeholder="name">
+        <button class="btn3">Input the distance</button>
+        <div class="out2">0</div>
     </div>
-    <script>
-
-
-
-    </script>
+    <script src="HW-beetroot.js"></script>
 </body>
 </html>

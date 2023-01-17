@@ -7,6 +7,13 @@ let ar1 = ['Ruslan', 12, true, 'Hi', 28, false];
 function f1() {
     document.querySelector('.out-1').innerHTML = ar1;
     //ваш_элемент.innerHTML = ar1; // да так можно выводить!!!!
+
+//  2 version
+   // let out = "";
+    // for (let i = 0; i < ar1.length; i++) {
+    //     out += ar1[i] + " ";
+    // }
+    // document.querySelector(".out-1").innerHTML = out;
 }
 
 document.querySelector('.b-1').onclick = f1;
@@ -42,17 +49,18 @@ document.querySelector('.b-2').onclick = f2;
 // Тест допустим массив [1,2,3] вывод - 3
 
 // let ar3 =  // переменную обьявляем здесь!!!!
-let ar3 = ['Ruslan', 12, true, 'Hi', 28, false];
+let ar3 = ['Ruslan', 12, true, 'Hi', 28, false, 13];
 function f3() {
-    document.querySelector('.out-3').innerHTML = ar3.length;
+//     document.querySelector('.out-3').innerHTML = ar3.length;
 
+// 2 version
+    let out2 = [];
 
-    // let out2 = [];
-// перебирає літери???
-// for(let i = 0; i < ar3.length; i ++){
-//     out2 += ar3[i];
-// }
-// document.querySelector('.out-3').innerHTML = out2.length;
+for(let i = 0; i < ar3.length; i++){
+    console.log(ar3[i]);
+    out2[i] += ar3[i];
+}
+document.querySelector('.out-3').innerHTML = out2.length;
 }
 
 document.querySelector('.b-3').onclick = f3;
@@ -68,12 +76,17 @@ document.querySelector('.b-3').onclick = f3;
 
 let ar4 = [1,2,3,4,5,6,7,8,9,10];
 function f4() {
-    let out = '';
+
+    out = "";
+    out += `${ar4[0]} ${ar4[3]} ${ar4[8]}`
+
+    // 2 version
+    // let out = '';
    
-    for(let i = 0; i < ar4.length; i ++){
-        if (i == 0 || i == 3 || i == 8)
-            out += ar4[i] + ' ';
-        }
+    // for(let i = 0; i < ar4.length; i ++){
+    //     if (i == 0 || i == 3 || i == 8)
+    //         out += ar4[i] + ' ';
+    //     }
         document.querySelector('.out-4').innerHTML = out;
 }
 
@@ -90,14 +103,18 @@ document.querySelector('.b-4').onclick = f4;
 let ar5 = [1,2,3,4,5,6,7,8,9,10];
 
 function f5() {
-    let sum = 0;
+    out = "";
+    out += `${ar4[0] + ar4[2] + ar4[3]}`
+
+  // 2 version  
+//     let sum = 0;
     
-    for(let i = 0; i < ar4.length; i ++){
-if(i == 0 || i == 2 || i == 3){
-    // sum = sum + ar4[i];
-    sum += ar4[i];
-}
-    }
+//     for(let i = 0; i < ar4.length; i ++){
+// if(i == 0 || i == 2 || i == 3){
+//     // sum = sum + ar4[i];
+//     sum += ar4[i];
+// }
+//     }
     document.querySelector('.out-5').innerHTML = sum;
 }
 
@@ -130,7 +147,19 @@ document.querySelector('.b-6').onclick = f6;
 let ar7 = ['china', 'india', 'brazil', 'japan', 'egypt'];
 
 function f7() {
-    ar7.push('italy', 'turkey', 'vietnam');
+    out = "";
+    ar7[7] = 'vietnam';
+    ar7[6] = 'turkey';
+    ar7[5] = 'italy';
+    for (let i = 0; i < ar7.length; i++) {
+        out += ar7[i] + " ";
+    }
+
+      // 2 version  
+    // ar7.push('italy', 'turkey', 'vietnam');
+
+  // 3 version  
+    // ar7.splice(5, 1, 'italy', 'turkey', 'vietnam');
     document.querySelector('.out-7').innerHTML = ar7;
 }
 
@@ -175,6 +204,8 @@ function f9() {
         out = ar9[i];
     }
     document.querySelector('.out-9').innerHTML = out;
+
+    // document.querySelector('.out-9').innerHTML = ar9[ar9.length -1];
 }
 
 document.querySelector('.b-9').onclick = f9;
@@ -188,10 +219,12 @@ document.querySelector('.b-9').onclick = f9;
 let ar10 = [100, 200, 300, 400, 700, 121];
 
 function f10() {
-    let sum = 0;
-    for(let i = 0; i < ar10.length; i++){
-        sum = `${ar10[0] + ar10[i]}` ;
-    }
+    document.querySelector('.out-10').innerHTML = ar10[1] + ar10[ar10.length - 1]
+ // 2 version  
+    // let sum = 0;
+    // for(let i = 0; i < ar10.length; i++){
+    //     sum = `${ar10[0] + ar10[i]}` ;
+    // }
     document.querySelector('.out-10').innerHTML = sum;
 }
 
@@ -208,15 +241,21 @@ document.querySelector('.b-10').onclick = f10;
 let ar11 = [2, 3, 4, 5, 6, 7];
 
 function f11() {
+    let i = ar11[2]
+    ar11[2] = ar11[4]
+    ar11[4] = i;
+    let out = "";
+    for (let k = 0; k < ar11.length; k++) {
+        out += ar11[k] + " ";
+    }
 
-    t = ar11[2];
-    ar11[2] = ar11[4];
-    ar11[4] = t;
-
-    // ar11[4] = ar11.splice(2,1, ar11[4])[2]; //don't work
-
-
-    document.querySelector('.out-11').innerHTML = ar11.join(' ');
+     // 2 version 
+    // t = ar11[2];
+    // ar11[2] = ar11[4];
+    // ar11[4] = t;
+    // document.querySelector('.out-11').innerHTML = ar11.join(' ');
+    
+    document.querySelector('.out-11').innerHTML = out;
 
 }
 
@@ -256,6 +295,13 @@ let out = '';
 for(let i = 0; i < ar13.length; i++){
     out += `${i} ${ar13[i]} `;
 }
+
+     // 2 version 
+// out = "";
+// let i = 0;
+// while (i < ar13.length) {
+//     out += `${i} ${ar13[i]} `
+//     i++;
 document.querySelector('.out-13').innerHTML = out;
 }
 
@@ -317,6 +363,16 @@ function f16() {
         } else{
             ar16_odd.push(ar16[i]);
         }
+
+        // 2 version 
+        // for (let i = 0; i < ar16.length; i++) {
+        //     if (ar16[i] % 2 == 0) {
+        //         ar16_even[i] = ar16[i]
+        //         out_even += ar16_even[i] + " ";
+        //     } else {
+        //         ar16_odd[i] = ar16[i]
+        //         out_odd += ar16_odd[i] + " ";
+        //     }
     }
 document.querySelector('.out-16-even').innerHTML = ar16_even.join(' ');
 document.querySelector('.out-16-odd').innerHTML = ar16_odd.join(' ');
@@ -339,6 +395,14 @@ function f17() {
             out.push(ar17[i]);
         }
     }
+// 2 version 
+    // let out = 0;
+    // let i = 0;
+    // while (i < ar17.length) {
+    //     i++;
+    //     if (ar17[i] > 3) {
+    //         out = out + 1;
+    //     }
     document.querySelector('.out-17').innerHTML = out.length;
 }
 

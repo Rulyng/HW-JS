@@ -69,9 +69,10 @@
             }
 
             if (inp1.value && inp2.value && inp5.checked) {
-                users.push(obj)
+                users.push(obj);
                 inp1.value = '';
                 inp2.value = '';
+                inp5.checked = false;
                 out.innerHTML = `<b style='color: green'> Thanks, you are reg </b>`;
 
             } else {
@@ -84,10 +85,13 @@
         btn.onclick = () => {
 
             for (let i = 0; i < users.length; i++) {
-                if (users[i].login == inp3.value && users[i].password == inp4.value) {
+                if (users[i].login == inp3.value && users[i].password == inp4.value) 
+                
+                {
                     out2.innerHTML = `<b style='color: green'> Wellcome </b>`;
                     inp3.value = '';
                     inp4.value = '';
+                    break;
                 } else {
                     out2.innerHTML = `<b style='color: red'> Error, wrong login or password</b>`;
                 }
