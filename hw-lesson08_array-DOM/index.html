@@ -26,6 +26,7 @@
         }
 
         .pets__item {
+            width: 300px;
             padding: 10px;
             border: 1px solid;
             border-radius: 10px;
@@ -35,6 +36,7 @@
             display: block;
             width: 100%;
             height: 160px;
+            /* width: fit-content; */
             object-fit: cover;
             border-radius: 10px;
             margin-bottom: 16px;
@@ -65,16 +67,16 @@
         <nav>
             <div class="serch"><input class="inp1" type="text"><button class="btn1">search</button></div>
             <div class="select">
-                <select name="" id="">
+                <select class="sel" name="" id="">
                     <option value="Другая">Другая</option>
                     <option value="Скоттиш фолд">Скоттиш фолд</option>
                     <option value="Экзотическая короткошерстная">Экзотическая короткошерстная</option>
                 </select>
-                <button class="btn2">search</button>
+                <button class="btnsel">search</button>
             </div>
             <div class="serch">
-                <button>Від дешевих</button>
-                <button>Від дорогого</button>
+                <button class="btn-cheap">Від дешевих</button>
+                <button class="btn-expenc">Від дорогого</button>
             </div>
         </nav>
         <div class="pets__container">
@@ -91,29 +93,43 @@
     <script>
 
         let btn1 = document.querySelector('.btn1');
-        let btn2 = document.querySelector('.btn2');
+        let btnsel = document.querySelector('.btnsel');
+        let btncheap = document.querySelector('.btn-cheap');
+        let btnexpenc = document.querySelector('.btn-expenc');
         let out = document.querySelector('.pets__container');
         let inp1 = document.querySelector('.inp1');
+        let sel = document.querySelector('.sel');
 
-    //     btn1.onclick = () => {
-    //     return pets.filter(pet => {
-    //       return pet.name === inp1.value
-    //     }).forEach(el => {
-    //       out.innerHTML += ` <div class="pets__item"> 
-    //             <h3 class="pets__name">${el.name}</h3>
-    //             <img class="pets__img" src="${el.url}" alt="">
-    //             <div class="pets__price">${el.price}</div>
-    //             <p class="pets__description">${el.description}</p>
-    //             <h5 class="pets__loc">${el.location}</h5>
-    //             </div>`;
-    //     });
-    //   }
+//V. don't work
+//         btn1.onclick = () => {
+//             out.innerHTML = '';
+//             let out77 = '';
+// for(let i = 0; i < pets.length; i++){
 
+//     if(pets[i].name.toLowerCase() === inp1.value.toLowerCase()){
+//         out77 += ` <div class="pets__item"> 
+// <h3 class="pets__name">${pets[i].name}</h3>
+// <img class="pets__img" src="${pets[i].url}" alt="">
+// <div class="pets__price">${pets[i].price}</div>
+// <p class="pets__description">${pets[i].description}</p>
+// <h5 class="pets__loc">${pets[i].location}</h5>
+// </div>`;
+//                 }
+//                 //  не спрацьовує ????? 
+//                  else {
+//                     out.innerHTML = 'Wrong!!!';
+//                 }
+//             }
+//             out.innerHTML = out77;
+//         }
+
+//V work
         btn1.onclick = () => {
+            out.innerHTML = '';
             let out77 = '';
 for(let i = 0; i < pets.length; i++){
 
-    if(pets[i].name === inp1.value){
+    if(pets[i].name.toLowerCase() === inp1.value.toLowerCase()){
         out77 += ` <div class="pets__item"> 
 <h3 class="pets__name">${pets[i].name}</h3>
 <img class="pets__img" src="${pets[i].url}" alt="">
@@ -122,17 +138,116 @@ for(let i = 0; i < pets.length; i++){
 <h5 class="pets__loc">${pets[i].location}</h5>
 </div>`;
 
+out.innerHTML = out77;
                 }
-                // не спрацьовує
-                //  else {
-                //     out.innerHTML = 'Wrong!!!';
-                // }
+                 else if(out.innerHTML === ''){
+                    out.innerHTML = 'Wrong!!!';
+                }
                 
             }
-            out.innerHTML = out77;
         }
 
 
+// long version
+// btn1.onclick = () => {
+//             out.innerHTML = '';
+//             let out77 = '';
+//             let it = true;
+// for(let i = 0; i < pets.length; i++){
+//     if(pets[i].name.toLowerCase() === inp1.value.toLowerCase()){
+//         out77 += ` <div class="pets__item"> 
+// <h3 class="pets__name">${pets[i].name}</h3>
+// <img class="pets__img" src="${pets[i].url}" alt="">
+// <div class="pets__price">${pets[i].price}</div>
+// <p class="pets__description">${pets[i].description}</p>
+// <h5 class="pets__loc">${pets[i].location}</h5>
+// </div>`;
+
+// out.innerHTML = out77;
+// it = false;
+// break;
+//                 }
+//                   if (it = true){
+//                     out.innerHTML = 'Wrong!!!';
+//         }
+//                 }
+                 
+//             }
+         
+
+//SELECT name
+btnsel.onclick = () =>{
+    out.innerHTML = '';
+if(sel.value === 'Другая'){
+    pets.map((item) => {
+if(item.name === 'Другая'){
+    out.innerHTML += ` <div class="pets__item"> 
+<h3 class="pets__name">${item.name}</h3>
+<img class="pets__img" src="${item.url}" alt="">
+<div class="pets__price">${item.price}</div>
+<p class="pets__description">${item.description}</p>
+<h5 class="pets__loc">${item.location}</h5>
+</div>`;
+}
+    })
+}
+if(sel.value === 'Скоттиш фолд'){
+    pets.map((item) => {
+if(item.name === 'Скоттиш фолд'){
+    out.innerHTML += ` <div class="pets__item"> 
+<h3 class="pets__name">${item.name}</h3>
+<img class="pets__img" src="${item.url}" alt="">
+<div class="pets__price">${item.price}</div>
+<p class="pets__description">${item.description}</p>
+<h5 class="pets__loc">${item.location}</h5>
+</div>`;
+}
+    })
+}
+if(sel.value === 'Экзотическая короткошерстная'){
+    pets.map((item) => {
+if(item.name === 'Экзотическая короткошерстная'){
+    out.innerHTML += ` <div class="pets__item"> 
+<h3 class="pets__name">${item.name}</h3>
+<img class="pets__img" src="${item.url}" alt="">
+<div class="pets__price">${item.price}</div>
+<p class="pets__description">${item.description}</p>
+<h5 class="pets__loc">${item.location}</h5>
+</div>`;
+}
+    })
+}
+}
+
+//sort price
+btncheap.onclick = () =>{
+    let sorts = pets.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+    out.innerHTML = '';
+    sorts.map((item)=> {
+        out.innerHTML += ` <div class="pets__item"> 
+<h3 class="pets__name">${item.name}</h3>
+<img class="pets__img" src="${item.url}" alt="">
+<div class="pets__price">${item.price}</div>
+<p class="pets__description">${item.description}</p>
+<h5 class="pets__loc">${item.location}</h5>
+</div>`;
+    })
+}
+
+
+btnexpenc.onclick = () =>{
+    let sorts = pets.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+    out.innerHTML = '';
+    sorts.map((item)=> {
+        out.innerHTML += ` <div class="pets__item"> 
+<h3 class="pets__name">${item.name}</h3>
+<img class="pets__img" src="${item.url}" alt="">
+<div class="pets__price">${item.price}</div>
+<p class="pets__description">${item.description}</p>
+<h5 class="pets__loc">${item.location}</h5>
+</div>`;
+    })
+}
 
         const pets = [
             {

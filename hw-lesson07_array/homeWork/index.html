@@ -14,65 +14,183 @@
             Валідація
         </li>
     </ol>
-    <input class="inp" type="text">
-    <input class="inp1" type="number">
-    <button class="btn">add</button>
+    <input class="inp1add" type="text">
+    <input class="inp2add" type="number">
+    <button class="btnadd">add</button>
 
 
-    <button class="btn2">Show all</button>
-    <button class="delete">delete</button>
-    <div class="out">---</div>
+    <button class="btnshow">Show all</button>
+    <button class="btndelete">delete</button>
+    <div class="outshow">---</div>
     <div class="counter">0</div>
     <div class="out2"></div>
 
     <section>
         <h3>Сортування</h3>
 
-        <select name="" id="">
-            <option value="">більше 18</option>
-            <option value="">всі меньше 18</option>
-            <option value="">всі кому за 40</option>
+        <select class="sel" name="" id="">
+            <option value="more18">більше 18</option>
+            <option value="less18">меньше 18</option>
+            <option value="more40">всі кому за 40</option>
         </select>
 
-        <button>show</button>
-        <div>0</div>
+        <button class="btnsort">show</button>
+        <div class="sort">0</div>
     </section>
 
     <section>
         <h3>Пошук юзера</h3>
         <p>не враховувати великі і маленькі букви "A" "a"</p>
-        <input type="text">
+        <input class="inpuser" type="text">
 
-        <button>show</button>
-        <div>0</div>
+        <button class="btnsearch">show</button>
+        <div class="outsearch">0</div>
     </section>
 
     <script>
 
-let inp = document.querySelector('.inp')
-        let inp1 = document.querySelector('.inp1')
-        let out = document.querySelector('.out');
-        let out2 = document.querySelector('.out2');
+        let inp1add = document.querySelector('.inp1add')
+        let inp2add = document.querySelector('.inp2add')
+        let inpuser = document.querySelector('.inpuser')
+        let outshow = document.querySelector('.outshow');
+        let outcount = document.querySelector('.counter');
+        let outsort = document.querySelector('.sort');
+        let outsearch = document.querySelector('.outsearch');
+        let btnadd = document.querySelector('.btnadd');
+        let btnshow = document.querySelector('.btnshow');
+        let btndelete = document.querySelector('.btndelete');
+        let btnsort = document.querySelector('.btnsort');
+        let btnsearch = document.querySelector('.btnsearch');
+        let sel = document.querySelector('.sel');
+        
+        
 
         let users = [];
-        document.querySelector('.btn').onclick = () => {
+
+       //add users
+        btnadd.onclick = () => {
             let obj = {
-                name: inp.value,
-                age: inp1.value,
+                name: inp1add.value,
+                age: +inp2add.value,
             }
-            users.push(obj)
+            if(obj.name && obj.age){
+                  users.push(obj);
+            }
+          
+            inp1add.value = '';
+            inp2add.value = '';
+
+            outcount.innerHTML = `Counter :${users.length}`;
         }
 
-        document.querySelector('.btn2').onclick = () => {
-            out.innerHTML = '';
+        //show all
+        btnshow.onclick = () => {
+            outshow.innerHTML = '';
             users.map((item) => {
-                out.innerHTML += `<span>Name is ${item.name}</span> <span>and age = ${item.age}</span>  <button>X</button> <br>`;
+                outshow.innerHTML += `<span>Name is ${item.name}</span> <span>and age = ${item.age}</span>  <button class='btndel'>X</button> <br>`;
             })
         }
 
+// delete
+        btndelete.onclick = () =>{
+                users.splice(users.length-1, 1);
+                //v2     users.pop();
+                outshow.innerHTML = '';
+                users.map((item) => {
+                    outshow.innerHTML += `<span>Name is ${item.name}</span> <span>and age = ${item.age}</span>  <button class='btndel'>X</button> <br>`;
+            })
+            outcount.innerHTML = `Counter :${users.length}`;
+        }
 
+        //sort
+        btnsort.onclick = () =>{
+            outsort.innerHTML = '';
+        if(sel.value == 'more18'){
+            users.map((item) => {
+                if(item.age > 18){
+                    outsort.innerHTML += `<h5>${item.name}</h5>`;
+                }    
+            })
+        }
+        if(sel.value == 'less18'){
+            users.map((item) => {
+                if(item.age < 18){
+                    outsort.innerHTML += `<h5>${item.name}</h5>`;
+                }    
+            })
+        }
+        if(sel.value == 'more40'){
+            users.map((item) => {
+                if(item.age > 40){
+                    outsort.innerHTML += `<h5>${item.name}</h5>`;
+                }    
+            })
+        }
 
+        // v2 
+        // switch (select.value) {
+        //         case 'Більше чи є 18': {
+        //             users.map((i) => {
+        //                 if (i.age >= 18) {
+        //                     document.querySelector('.out3').innerHTML += `
+        //         <h2>${i.name} </h2> 
+        //         `
+        //                 }
+        //             })
+        //             break;
+        //         }
+        //         case 'Меньше 18': {
+        //             users.map((i) => {
+        //                 if (i.age < 18) {
+        //                     document.querySelector('.out3').innerHTML += `
+        //         <h2>${i.name} </h2> 
+        //         `
+        //                 }
+        //             })
+        //             break;
+        //         }
+        //         case 'Всі, кому за 40': {
+        //             users.map((i) => {
+        //                 if (i.age > 40) {
+        //                     document.querySelector('.out3').innerHTML += `
+        //         <h2>${i.name} </h2> 
+        //         `
+        //                 }
+        //             })
+        //             break;
+        //         }
+        //     }
+            }
 
+            //Search user
+
+            //якщо вводиш друге імя, знаходитьйого та додає на початку `User not found` (User not foundName: Dd, age: 5)?????
+            btnsearch.onclick = () =>{
+                outsearch.innerHTML = '';
+                for(let i = 0; i < users.length; i++){
+                    if(inpuser.value.toLowerCase() == users[i].name.toLowerCase()){
+                        outsearch.innerHTML += `Name: ${users[i].name}, age: ${users[i].age} <br>`;
+                        break;
+                    }
+                    else{
+                        outsearch.innerHTML = '';
+                        outsearch.innerHTML = `User not found`;
+                    }
+                }
+            }
+
+            //    v3 - work
+        //         outsearch.innerHTML = "";
+        // for (let i = 0; i < users.length; i++) {
+        //   if (inpuser.value.toLowerCase() === users[i].name.toLowerCase()) {
+        //     outsearch.innerHTML += `Name: ${users[i].name}, age: ${users[i].age} <br>`;
+        //   }
+        // }
+        // if (outsearch.innerHTML === "") {
+        //   outsearch.innerHTML = `User not found`;
+        // }
+
+            
     </script>
 </body>
 
