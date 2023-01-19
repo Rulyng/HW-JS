@@ -98,13 +98,12 @@
         let out = document.querySelector('.pets__container');
         let inp1 = document.querySelector('.inp1');
         let sel = document.querySelector('.sel');
-
-//V. don't work
+//SEARCH
+//V. don't work (виводить лише одного кота) ???????
 //         btn1.onclick = () => {
 //             out.innerHTML = '';
 //             let out77 = '';
 // for(let i = 0; i < pets.length; i++){
-
 //     if(pets[i].name.toLowerCase() === inp1.value.toLowerCase()){
 //         out77 += ` <div class="pets__item"> 
 // <h3 class="pets__name">${pets[i].name}</h3>
@@ -113,21 +112,20 @@
 // <p class="pets__description">${pets[i].description}</p>
 // <h5 class="pets__loc">${pets[i].location}</h5>
 // </div>`;
+// out.innerHTML = out77;
+// break;
 //                 }
-//                 //  не спрацьовує ????? 
 //                  else {
 //                     out.innerHTML = 'Wrong!!!';
 //                 }
 //             }
-//             out.innerHTML = out77;
 //         }
 
-//V work
+//V. work
         btn1.onclick = () => {
             out.innerHTML = '';
             let out77 = '';
 for(let i = 0; i < pets.length; i++){
-
     if(pets[i].name.toLowerCase() === inp1.value.toLowerCase()){
         out77 += ` <div class="pets__item"> 
 <h3 class="pets__name">${pets[i].name}</h3>
@@ -136,13 +134,11 @@ for(let i = 0; i < pets.length; i++){
 <p class="pets__description">${pets[i].description}</p>
 <h5 class="pets__loc">${pets[i].location}</h5>
 </div>`;
-
 out.innerHTML = out77;
                 }
                  else if(out.innerHTML === ''){
                     out.innerHTML = 'Wrong!!!';
                 }
-                
             }
         }
 
