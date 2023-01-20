@@ -163,33 +163,56 @@
             }
 
             //Search user
+            // якщо у юзерів унікальні імена
 
-            //якщо вводиш друге імя, знаходитьйого та додає на початку `User not found` (User not foundName: Dd, age: 5)?????
-            btnsearch.onclick = () =>{
-                outsearch.innerHTML = '';
-                for(let i = 0; i < users.length; i++){
-                    if(inpuser.value.toLowerCase() == users[i].name.toLowerCase()){
-                        outsearch.innerHTML += `Name: ${users[i].name}, age: ${users[i].age} <br>`;
-                        break;
-                    }
-                    else{
-                        outsearch.innerHTML = '';
-                        outsearch.innerHTML = `User not found`;
-                    }
-                }
+            //  btnsearch.onclick = () =>{
+            //     outsearch.innerHTML = '';
+            //     for(let i = 0; i < users.length; i++){
+            //         if(inpuser.value.toLowerCase() === users[i].name.toLowerCase()){
+            //             outsearch.innerHTML = `Name: ${users[i].name}, age: ${users[i].age} <br>`;
+            //         }
+            //         else if(outsearch.innerHTML === ''){
+            //             outsearch.innerHTML = '';
+            //             outsearch.innerHTML = `User not found`;
+            //         }
+            //     }
+            // }
+
+            //    v2 якщо декілька юзерів з однаковим іменем
+    //         btnsearch.onclick = () =>{    
+    //     outsearch.innerHTML = "";
+    //     for (let i = 0; i < users.length; i++) {
+    //       if (inpuser.value.toLowerCase() === users[i].name.toLowerCase()) {
+    //         outsearch.innerHTML += `Name: ${users[i].name}, age: ${users[i].age} <br>`;
+    //       }
+    //     }
+    //     if (outsearch.innerHTML === "") {
+    //       outsearch.innerHTML = `User not found`;
+    //     }
+    // }
+
+
+// через indexOf пошук по одній літері в слові!!!
+
+    btnsearch.onclick = () =>{
+        outsearch.innerHTML = "";
+        for (let i = 0; i < users.length; i++) {
+            let lowuser = users[i].name.toLowerCase();
+            let lowval = inpuser.value.toLowerCase();
+
+            if(lowuser.indexOf(lowval) >= 0){
+                outsearch.innerHTML += `Name: ${users[i].name}, age: ${users[i].age} <br>`;
             }
-
-            //    v3 - work
-        //         outsearch.innerHTML = "";
-        // for (let i = 0; i < users.length; i++) {
-        //   if (inpuser.value.toLowerCase() === users[i].name.toLowerCase()) {
-        //     outsearch.innerHTML += `Name: ${users[i].name}, age: ${users[i].age} <br>`;
-        //   }
-        // }
-        // if (outsearch.innerHTML === "") {
-        //   outsearch.innerHTML = `User not found`;
-        // }
-
+        }
+        if(outsearch.innerHTML === ""){
+        outsearch.innerHTML = `User not found`;
+        }
+            }
+           
+    
+        // let j = 'Sasha';
+        // console.log(j.indexOf('b'));
+        
             
     </script>
 </body>
