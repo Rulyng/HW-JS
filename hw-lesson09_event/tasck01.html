@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .div {
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            border: 1px solid;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="div">
+
+    </div>
+
+
+
+    <script>
+        // По другому кліку зупинити moveTest
+        // на масив обекті
+
+
+let div = document.querySelector(".div");
+      let clicked = false;
+
+      function movediv(event) {
+        if (clicked) {
+          let width = div.offsetWidth / 2;
+          let height = div.offsetHeight / 2;
+          div.style.transform = `translate(${event.clientX - width}px, ${
+            event.clientY - height
+          }px)`;
+        }
+      }
+
+      function movediv2() {
+        if (!clicked) {
+          window.addEventListener("mousemove", movediv);
+          clicked = true;
+        } else {
+          window.removeEventListener("mousemove", movediv);
+          clicked = false;
+        }
+      }
+
+      div.addEventListener("mousedown", movediv2);
+
+      let a = !clicked;
+      console.log(a);
+
+    </script>
+</body>
+
+</html>
