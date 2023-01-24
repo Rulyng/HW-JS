@@ -98,6 +98,11 @@
         let out = document.querySelector('.pets__container');
         let inp1 = document.querySelector('.inp1');
         let sel = document.querySelector('.sel');
+
+
+
+
+
 //SEARCH
 //V. don't work (виводить лише одного кота) ???????
 //         btn1.onclick = () => {
@@ -122,25 +127,24 @@
 //         }
 
 //V. work
-        btn1.onclick = () => {
-            out.innerHTML = '';
-            // let out77 = '';
-for(let i = 0; i < pets.length; i++){
-    if(pets[i].name.toLowerCase() === inp1.value.toLowerCase()){
-        out.innerHTML += ` <div class="pets__item"> 
-<h3 class="pets__name">${pets[i].name}</h3>
-<img class="pets__img" src="${pets[i].url}" alt="">
-<div class="pets__price">${pets[i].price}</div>
-<p class="pets__description">${pets[i].description}</p>
-<h5 class="pets__loc">${pets[i].location}</h5>
-</div>`;
-// out.innerHTML = out77;
-                }
-                 else if(out.innerHTML === ''){
-                    out.innerHTML = 'Wrong!!!';
-                }
-            }
-        }
+
+//         btn1.onclick = () => {
+//             out.innerHTML = '';
+// for(let i = 0; i < pets.length; i++){
+//     if(pets[i].name.toLowerCase() === inp1.value.toLowerCase()){
+//         out.innerHTML += ` <div class="pets__item"> 
+// <h3 class="pets__name">${pets[i].name}</h3>
+// <img class="pets__img" src="${pets[i].url}" alt="">
+// <div class="pets__price">${pets[i].price}</div>
+// <p class="pets__description">${pets[i].description}</p>
+// <h5 class="pets__loc">${pets[i].location}</h5>
+// </div>`;
+//                 }
+//                  else if(out.innerHTML === ''){
+//                     out.innerHTML = 'Wrong!!!';
+//                 }
+//             }
+//         }
 
 
 // long version
@@ -164,6 +168,25 @@ for(let i = 0; i < pets.length; i++){
 //         }
 //             }
          
+//пошук по буквам
+btn1.onclick = () => {
+            out.innerHTML = '';
+for(let i = 0; i < pets.length; i++){
+    if(pets[i].name.toLowerCase().indexOf(inp1.value.toLowerCase()) >= 0){
+        out.innerHTML += ` <div class="pets__item"> 
+<h3 class="pets__name">${pets[i].name}</h3>
+<img class="pets__img" src="${pets[i].url}" alt="">
+<div class="pets__price">${pets[i].price}</div>
+<p class="pets__description">${pets[i].description}</p>
+<h5 class="pets__loc">${pets[i].location}</h5>
+</div>`;
+                }
+                
+            }
+            if(out.innerHTML === ''){
+                    out.innerHTML = 'Wrong!!!';
+                }
+        }
 
 //SELECT name
 btnsel.onclick = () =>{

@@ -35,13 +35,13 @@ let div = document.querySelector(".div");
       let clicked = false;
 
       function movediv(event) {
-        if (clicked) {
+        // if (clicked) {
           let width = div.offsetWidth / 2;
           let height = div.offsetHeight / 2;
           div.style.transform = `translate(${event.clientX - width}px, ${
             event.clientY - height
           }px)`;
-        }
+        // }
       }
 
       function movediv2() {
