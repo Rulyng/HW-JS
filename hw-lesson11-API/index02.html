@@ -109,14 +109,13 @@
             fetch('https://rickandmortyapi.com/api/character')
                 .then(data => data.json()) //потім
                 .then(data => {
-                    // console.log(data.info.pages);
                     let count = data.info.pages; //кількість сторінок - це кількість кнопок
                     for (let i = 1; i <= count; i++) {  //створюю кнопки, цикл малює кнопки
                         let btn = document.createElement('button');
                         btn.classList.add('btn');
                         btn.setAttribute('value', i)
                         btn.innerHTML = i;
-                        // навішуємо подію onclick для переходу на відповідно сторінку
+                        // навішуємо подію onclick для переходу на відповідну сторінку
                         btn.onclick = () => {
                             // викликаємо ф. яка виводить конкрет.стор. та передаємо їй відповідний аргумент
                             // pages(btn.innerHTML) // можна через innerHTML
