@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Open Sans", sans-serif;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .main__row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+    }
+    .main__item {
+      padding: 16px;
+      border: 1px solid;
+      border-radius: 20px;
+    }
+    .main__img {
+      display: block;
+      width: 100%;
+    }
+    .btn-row {
+      margin: 16px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+
+    }
+    .btn {
+      display: block;
+      background-color: #007aff;
+      color: #fff;
+      min-width: 40px;
+      border: none;
+      border-radius: 10px;
+    }
+
+  </style>
+</head>
+<body>
+
+<section class="main">
+
+  <div class="container">
+    <h2> Рік і Морті Сезон</h2>
+
+    <div class="btn-row">
+
+    </div>
+    <nav>
+      <select class="select" name="" id="">
+
+      </select>
+    </nav>
+    <div class="main__row">
+
+
+      <!-- <div class="main__item">
+        <h5>S01E01</h5>
+        <h2 class="main__title">name</h2>
+        <p>December 2, 2013</p>
+      </div> -->
+
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<script>
+
+  const out = document.querySelector('.main__row')
+  const select = document.querySelector('.select')
+  const btnOut = document.querySelector('.btn-row')
+
+  fetch('https://rickandmortyapi.com/api/episode')
+          .then(data => data.json())
+          .then(data => {
+            console.log(data)
+
+            let count = data.results.id; //кількість сторінок - це кількість кнопок
+                    for (let i = 1; i <= count; i++) {  //створюю кнопки, цикл малює кнопки
+                        let btn = document.createElement('button');
+                        btn.classList.add('btn');
+                        btn.setAttribute('value', i)
+                        btn.innerHTML = i;
+                        // навішуємо подію onclick для переходу на відповідно сторінку
+                        btn.onclick = () => {
+                            // викликаємо ф. яка виводить конкрет.стор. та передаємо їй відповідний аргумент
+                            // pages(btn.innerHTML) // можна через innerHTML
+                            pages(btn.value)
+                        }
+                        btnout.append(btn);
+                    }
+
+            let ar = data.results;
+
+      //       ar.map((item) =>{
+      //   let newCart = creatItem(item);
+      //   out.append(newCart)
+      // })
+          })
+          .catch(err => console.log(err))
+
+      //     <div class="main__item">
+      //   <h5>S01E01</h5>
+      //   <h2 class="main__title">name</h2>
+      //   <p>December 2, 2013</p>
+      // </div>
+      function creatItem(item){
+       let mainItem = document.createElement('div');
+       let mainEpisod = document.createElement('h5');
+       let mainTitle = document.createElement('h2');
+       let mainData = document.createElement('p');
+
+       mainItem.classList.add('main__item');
+       mainEpisod.classList.add('main__episod');
+       mainTitle.classList.add('main__title');
+       mainData.classList.add('main__data');
+
+       mainEpisod.innerText = item.episode;
+       mainTitle.innerText = item.name;
+       mainData.innerText = item.air_date;
+
+       mainItem.append(mainEpisod, mainTitle, mainData)
+
+return mainItem
+      }
+
+      // function creatSelect(selItem){
+
+      // }
+
+</script>
+</body>
+</html>
