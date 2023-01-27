@@ -100,7 +100,6 @@
       fetch('https://rickandmortyapi.com/api/episode')
         .then(data => data.json())
         .then(data => {
-          console.log(data)
           let count = data.info.pages;
           for (let i = 1; i <= count; i++) {
             let btn = document.createElement('button');
@@ -148,20 +147,13 @@
               .then(data => data.json())
               .then(data => {
                 let ar = data.results;
-                console.log(ar);
                 creatSelect(ar)
-
-                // ar.forEach((item) => {
-                //   let newCart = creatItem(item);
-                //   out.append(newCart)
-                // })
 
                 select.addEventListener('change', () =>{
                   out.innerHTML = '';
                   let ar1 = data.results;
                   ar1.forEach((item) =>{
                   if(select.value == item.id){
-
                     let newCart = creatItem(item);
                   out.append(newCart)
                   }
@@ -171,8 +163,6 @@
               })
               .catch(err => console.log(err))
           }
-
-
 
     function creatItem(item) {
       let mainItem = document.createElement('div');
@@ -207,10 +197,6 @@
 
     }
 
- //       ar.map((item) =>{
-      //   let newCart = creatItem(item);
-      //   out.append(newCart)
-      // })
 
   </script>
 </body>
