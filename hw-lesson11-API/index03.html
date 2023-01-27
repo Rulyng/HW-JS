@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
@@ -10,9 +11,11 @@
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: "Open Sans", sans-serif;
     }
+
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -24,15 +27,18 @@
       grid-template-columns: repeat(4, 1fr);
       grid-gap: 10px;
     }
+
     .main__item {
       padding: 16px;
       border: 1px solid;
       border-radius: 20px;
     }
+
     .main__img {
       display: block;
       width: 100%;
     }
+
     .btn-row {
       margin: 16px 0;
       display: flex;
@@ -40,6 +46,7 @@
       gap: 10px;
 
     }
+
     .btn {
       display: block;
       background-color: #007aff;
@@ -48,105 +55,164 @@
       border: none;
       border-radius: 10px;
     }
-
   </style>
 </head>
+
 <body>
 
-<section class="main">
+  <section class="main">
 
-  <div class="container">
-    <h2> Рік і Морті Сезон</h2>
+    <div class="container">
+      <h2> Рік і Морті Сезон</h2>
 
-    <div class="btn-row">
+      <div class="btn-row">
 
-    </div>
-    <nav>
-      <select class="select" name="" id="">
+      </div>
+      <nav>
+        <select class="select" name="" id="">
 
-      </select>
-    </nav>
-    <div class="main__row">
+        </select>
+      </nav>
+      <div class="main__row">
 
 
-      <!-- <div class="main__item">
-        <h5>S01E01</h5>
-        <h2 class="main__title">name</h2>
-        <p>December 2, 2013</p>
-      </div> -->
+      </div>
 
     </div>
-
-  </div>
-</section>
+  </section>
 
 
 
 
-<script>
+  <script>
 
-  const out = document.querySelector('.main__row')
-  const select = document.querySelector('.select')
-  const btnOut = document.querySelector('.btn-row')
+    const out = document.querySelector('.main__row')
+    const select = document.querySelector('.select')
+    const btnOut = document.querySelector('.btn-row')
 
-  fetch('https://rickandmortyapi.com/api/episode')
-          .then(data => data.json())
-          .then(data => {
-            console.log(data)
+    showButton()
+    showFirst()
 
-            let count = data.results.id; //кількість сторінок - це кількість кнопок
-                    for (let i = 1; i <= count; i++) {  //створюю кнопки, цикл малює кнопки
-                        let btn = document.createElement('button');
-                        btn.classList.add('btn');
-                        btn.setAttribute('value', i)
-                        btn.innerHTML = i;
-                        // навішуємо подію onclick для переходу на відповідно сторінку
-                        btn.onclick = () => {
-                            // викликаємо ф. яка виводить конкрет.стор. та передаємо їй відповідний аргумент
-                            // pages(btn.innerHTML) // можна через innerHTML
-                            pages(btn.value)
-                        }
-                        btnout.append(btn);
-                    }
 
-            let ar = data.results;
 
-      //       ar.map((item) =>{
+    function showButton() {
+     
+      fetch('https://rickandmortyapi.com/api/episode')
+        .then(data => data.json())
+        .then(data => {
+          console.log(data)
+          let count = data.info.pages;
+          for (let i = 1; i <= count; i++) {
+            let btn = document.createElement('button');
+            btn.classList.add('btn');
+            btn.setAttribute('value', i);
+            btn.innerHTML = i;
+           
+            btn.onclick = ()=>{
+              pages(btn.value)
+            }
+            btnOut.append(btn);
+
+          }
+        })
+        .catch(err => console.log(err))
+
+    }
+
+          function showFirst(){
+            out.innerHTML = '';
+            fetch(`https://rickandmortyapi.com/api/episode?page=1`)
+              .then(data => data.json())
+              .then(data => {
+                let ar = data.results;
+                creatSelect(ar)
+
+                select.addEventListener('change', () =>{
+                  out.innerHTML = '';
+                  let ar1 = data.results;
+                  ar1.forEach((item) =>{
+                  if(item.id == select.value ){
+
+                    let newCart = creatItem(item);
+                  out.append(newCart)
+                  }
+                })
+                })
+              })
+              .catch(err => console.log(err))
+          }
+
+          function pages(num) {
+            out.innerHTML = '';
+            fetch(`https://rickandmortyapi.com/api/episode?page=${num}`)
+              .then(data => data.json())
+              .then(data => {
+                let ar = data.results;
+                console.log(ar);
+                creatSelect(ar)
+
+                // ar.forEach((item) => {
+                //   let newCart = creatItem(item);
+                //   out.append(newCart)
+                // })
+
+                select.addEventListener('change', () =>{
+                  out.innerHTML = '';
+                  let ar1 = data.results;
+                  ar1.forEach((item) =>{
+                  if(select.value == item.id){
+
+                    let newCart = creatItem(item);
+                  out.append(newCart)
+                  }
+                })
+                })
+
+              })
+              .catch(err => console.log(err))
+          }
+
+
+
+    function creatItem(item) {
+      let mainItem = document.createElement('div');
+      let mainEpisod = document.createElement('h5');
+      let mainTitle = document.createElement('h2');
+      let mainData = document.createElement('p');
+
+      mainItem.classList.add('main__item');
+      mainEpisod.classList.add('main__episod');
+      mainTitle.classList.add('main__title');
+      mainData.classList.add('main__data');
+
+      mainEpisod.innerText = item.episode;
+      mainTitle.innerText = item.name;
+      mainData.innerText = item.air_date;
+
+      mainItem.append(mainEpisod, mainTitle, mainData)
+
+      return mainItem
+    }
+
+    function creatSelect(selItem) {
+      let newArr = [];
+      select.innerHTML = '';
+      selItem.map((item) => {
+        newArr.push(item.id)
+      })
+
+      newArr.forEach((item) => {
+        select.innerHTML += `<option value=${item}>${item}</option>`
+      })
+
+    }
+
+ //       ar.map((item) =>{
       //   let newCart = creatItem(item);
       //   out.append(newCart)
       // })
-          })
-          .catch(err => console.log(err))
 
-      //     <div class="main__item">
-      //   <h5>S01E01</h5>
-      //   <h2 class="main__title">name</h2>
-      //   <p>December 2, 2013</p>
-      // </div>
-      function creatItem(item){
-       let mainItem = document.createElement('div');
-       let mainEpisod = document.createElement('h5');
-       let mainTitle = document.createElement('h2');
-       let mainData = document.createElement('p');
-
-       mainItem.classList.add('main__item');
-       mainEpisod.classList.add('main__episod');
-       mainTitle.classList.add('main__title');
-       mainData.classList.add('main__data');
-
-       mainEpisod.innerText = item.episode;
-       mainTitle.innerText = item.name;
-       mainData.innerText = item.air_date;
-
-       mainItem.append(mainEpisod, mainTitle, mainData)
-
-return mainItem
-      }
-
-      // function creatSelect(selItem){
-
-      // }
-
-</script>
+  </script>
 </body>
+
 </html>
